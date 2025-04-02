@@ -2,6 +2,8 @@
 
 
 #include "Character/BFBaseCharacter.h"
+#include "AbilitySystem/BFAbilitySystemComponent.h"
+#include "AbilitySystem/BFAttributeSet.h"
 
 // Sets default values
 ABFBaseCharacter::ABFBaseCharacter()
@@ -10,4 +12,21 @@ ABFBaseCharacter::ABFBaseCharacter()
 	PrimaryActorTick.bStartWithTickEnabled = false;
 
 	GetMesh()->bReceivesDecals = false;
+
+	BFAbilitySystemComponent = CreateDefaultSubobject<UBFAbilitySystemComponent>(TEXT("BFAbilitySystemComponent"));
+	BFAttributeSet = CreateDefaultSubobject<UBFAttributeSet>(TEXT("BFAttributeSet"));
+}
+
+UAbilitySystemComponent* ABFBaseCharacter::GetAbilitySystemComponent() const
+{
+	return GetBFAbilitySystemComponent();
+}
+
+void ABFBaseCharacter::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+	if (BFAbilitySystemComponent)
+	{
+		BFAbilitySystemComponent->InitAbilityActorInfo(this, this);
+	}
 }

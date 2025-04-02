@@ -40,6 +40,11 @@ void ABFPlayerCharacter::BeginPlay()
 	Super::BeginPlay();
 }
 
+void ABFPlayerCharacter::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+}
+
 void ABFPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	checkf(InputConfigDataAsset, TEXT("Forget to assgin a vaild data asset as input config"));

@@ -22,7 +22,11 @@ public:
 	ABFPlayerCharacter();
 
 protected:
+	//~ Begin APawn Interface.
 	virtual void BeginPlay() override;
+	virtual void PossessedBy(AController* NewController) override;
+	//~ End APawn Interface
+
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 private:
