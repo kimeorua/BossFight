@@ -11,6 +11,7 @@
 #include "Component/Input/BFInputComponent.h"
 #include "BFGameplayTags.h"
 #include "DataAsset/StartUp/DataAsset_StartUpPlayer.h"
+#include "AbilitySystem/BFAbilitySystemComponent.h"
 
 ABFPlayerCharacter::ABFPlayerCharacter()
 {
@@ -68,10 +69,10 @@ void ABFPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 
 	UBFInputComponent* BFInputComponent = CastChecked<UBFInputComponent>(PlayerInputComponent);
 
-	BFInputComponent->BindNativeInputAction(InputConfigDataAsset, BFGameplayTag::Input_Move, ETriggerEvent::Triggered, this, &ThisClass::Input_Move);
-	BFInputComponent->BindNativeInputAction(InputConfigDataAsset, BFGameplayTag::Input_Look, ETriggerEvent::Triggered, this, &ThisClass::Input_Look);
+	BFInputComponent->BindNativeInputAction(InputConfigDataAsset, BFGameplayTag::InputTag_Move, ETriggerEvent::Triggered, this, &ThisClass::Input_Move);
+	BFInputComponent->BindNativeInputAction(InputConfigDataAsset, BFGameplayTag::InputTag_Look, ETriggerEvent::Triggered, this, &ThisClass::Input_Look);
 
-	//InputComponent->BindAbilityInputAction(InputConfigDataAsset, this, &ThisClass::Input_AbilityInputPressed, &ThisClass::Input_AbilityInputReleased);
+	BFInputComponent->BindAbilityInputAction(InputConfigDataAsset, this, &ThisClass::Input_AbilityInputPressed, &ThisClass::Input_AbilityInputReleased);
 }
 
 void ABFPlayerCharacter::Input_Move(const FInputActionValue& InputActionValue)
@@ -110,10 +111,10 @@ void ABFPlayerCharacter::Input_Look(const FInputActionValue& InputActionValue)
 
 void ABFPlayerCharacter::Input_AbilityInputPressed(FGameplayTag InInputTag)
 {
-	// TODO AbilitySystemComponent 구현 후, Ability 작동 구현
+	BFAbilitySystemComponent->OnAbilityInputPressed(InInputTag);
 }
 
 void ABFPlayerCharacter::Input_AbilityInputReleased(FGameplayTag InInputTag)
 {
-	// TODO AbilitySystemComponent 구현 후, Ability 종료 구현
+	BFAbilitySystemComponent->OnAbilityInputReleased(InInputTag);
 }

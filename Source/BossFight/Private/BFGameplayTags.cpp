@@ -5,6 +5,9 @@
 
 namespace BFGameplayTag
 {
-	UE_DEFINE_GAMEPLAY_TAG(Input_Move, "Input.Move");
-	UE_DEFINE_GAMEPLAY_TAG(Input_Look, "Input.Look");
+	UE_DEFINE_GAMEPLAY_TAG(InputTag_Move, "InputTag.Move");
+	UE_DEFINE_GAMEPLAY_TAG(InputTag_Look, "InputTag.Look");
+
+	UE_DEFINE_GAMEPLAY_TAG(InputTag_Hold, "InputTag.Hold");
+	UE_DEFINE_GAMEPLAY_TAG(InputTag_Hold_Dash, "InputTag.Hold.Dash");
 }
