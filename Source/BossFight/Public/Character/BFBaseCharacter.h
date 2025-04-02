@@ -9,6 +9,7 @@
 
 class UBFAbilitySystemComponent;
 class UBFAttributeSet;
+class UDataAsset_StartUpBase;
 
 UCLASS()
 class BOSSFIGHT_API ABFBaseCharacter : public ACharacter, public IAbilitySystemInterface
@@ -32,6 +33,9 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AbilitySystem")
 	UBFAttributeSet* BFAttributeSet;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Character Data")
+	TSoftObjectPtr<UDataAsset_StartUpBase> CharacterStartUpData;
 
 public:
 	FORCEINLINE UBFAbilitySystemComponent* GetBFAbilitySystemComponent() const { return BFAbilitySystemComponent; }

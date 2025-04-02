@@ -10,6 +10,7 @@
 #include "DataAsset/Input/DataAsset_InputConfig.h"
 #include "Component/Input/BFInputComponent.h"
 #include "BFGameplayTags.h"
+#include "DataAsset/StartUp/DataAsset_StartUpPlayer.h"
 
 ABFPlayerCharacter::ABFPlayerCharacter()
 {
@@ -43,6 +44,14 @@ void ABFPlayerCharacter::BeginPlay()
 void ABFPlayerCharacter::PossessedBy(AController* NewController)
 {
 	Super::PossessedBy(NewController);
+
+	if (!CharacterStartUpData.IsNull())
+	{
+		if (UDataAsset_StartUpBase* LodedData = CharacterStartUpData.LoadSynchronous())
+		{
+			LodedData->GiveToAbilitySystemComponent(BFAbilitySystemComponent);
+		}
+	}
 }
 
 void ABFPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)

@@ -28,5 +28,7 @@ void ABFBaseCharacter::PossessedBy(AController* NewController)
 	if (BFAbilitySystemComponent)
 	{
 		BFAbilitySystemComponent->InitAbilityActorInfo(this, this);
+
+		ensureMsgf(!CharacterStartUpData.IsNull(), TEXT("Forgat to assign start up data to %s"), *GetName());
 	}
 }
