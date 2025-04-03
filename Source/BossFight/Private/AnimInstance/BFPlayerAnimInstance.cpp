@@ -1,0 +1,19 @@
+// Fill out your copyright notice in the Description page of Project Settings.
+
+
+#include "AnimInstance/BFPlayerAnimInstance.h"
+#include "Character/BFPlayerCharacter.h"
+
+void UBFPlayerAnimInstance::NativeInitializeAnimation()
+{
+	Super::NativeInitializeAnimation();
+	if (OwningCharacter)
+	{
+		OwningPlayerCharacter = Cast<ABFPlayerCharacter>(OwningCharacter);
+	}
+}
+
+void UBFPlayerAnimInstance::NativeThreadSafeUpdateAnimation(float DeltaSeconds)
+{
+	Super::NativeThreadSafeUpdateAnimation(DeltaSeconds);
+}
