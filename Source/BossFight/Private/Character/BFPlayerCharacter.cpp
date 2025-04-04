@@ -12,6 +12,8 @@
 #include "BFGameplayTags.h"
 #include "DataAsset/StartUp/DataAsset_StartUpPlayer.h"
 #include "AbilitySystem/BFAbilitySystemComponent.h"
+#include "Kismet/KismetSystemLibrary.h"
+#include "Interface/InteractablePropInterface.h"
 
 ABFPlayerCharacter::ABFPlayerCharacter()
 {
@@ -71,6 +73,7 @@ void ABFPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 
 	BFInputComponent->BindNativeInputAction(InputConfigDataAsset, BFGameplayTag::InputTag_Move, ETriggerEvent::Triggered, this, &ThisClass::Input_Move);
 	BFInputComponent->BindNativeInputAction(InputConfigDataAsset, BFGameplayTag::InputTag_Look, ETriggerEvent::Triggered, this, &ThisClass::Input_Look);
+	BFInputComponent->BindNativeInputAction(InputConfigDataAsset, BFGameplayTag::InputTag_Interaction, ETriggerEvent::Started, this, &ThisClass::Input_Interection);
 
 	BFInputComponent->BindAbilityInputAction(InputConfigDataAsset, this, &ThisClass::Input_AbilityInputPressed, &ThisClass::Input_AbilityInputReleased);
 }
@@ -107,6 +110,35 @@ void ABFPlayerCharacter::Input_Look(const FInputActionValue& InputActionValue)
 	{
 		AddControllerPitchInput(LookAxisVector.Y);
 	}
+}
+
+void ABFPlayerCharacter::Input_Interection()
+{
+	FHitResult HitResult;
+
+	UKismetSystemLibrary::SphereTraceSingleForObjects
+	(
+		GetWorld(),
+		GetActorLocation(),
+		GetActorLocation(),
+		InteractionDistance,
+		ObjectType,
+		false,
+		TArray<AActor*>(),
+		bShowPersistenDebugShape ? EDrawDebugTrace::Persistent : EDrawDebugTrace::None,
+		HitResult,
+		true
+	);
+
+	if (HitResult.GetActor())
+	{
+		if (IInteractablePropInterface* InteractableProp = Cast<IInteractablePropInterface>(HitResult.GetActor()))
+		{
+			InteractableProp->Interact();
+		}
+		else { return; }
+	}
+	else { return; }
 }
 
 void ABFPlayerCharacter::Input_AbilityInputPressed(FGameplayTag InInputTag)

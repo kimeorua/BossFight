@@ -42,15 +42,25 @@ private:
 #pragma region Inputs
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Character Data", meta = (AllowPrivateAccess = "true"))
-	UDataAsset_InputConfig* InputConfigDataAsset;
+	UDataAsset_InputConfig* InputConfigDataAsset = nullptr;
 
 	UPROPERTY()
 	FVector2D SwitchDirection = FVector2D::ZeroVector;
 
 	void Input_Move(const FInputActionValue& InputActionValue);
 	void Input_Look(const FInputActionValue& InputActionValue);
+	void Input_Interection();
 
 	void Input_AbilityInputPressed(FGameplayTag InInputTag);
 	void Input_AbilityInputReleased(FGameplayTag InInputTag);
 #pragma endregion
+
+	UPROPERTY(EditDefaultsOnly, Category = "Interaction", meta = (AllowPrivateAccess = "true"))
+	float InteractionDistance = 100.f;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Interaction", meta = (AllowPrivateAccess = "true"))
+	TArray<TEnumAsByte<	EObjectTypeQuery>> ObjectType;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Interaction", meta = (AllowPrivateAccess = "true"))
+	bool bShowPersistenDebugShape = false;
 };
