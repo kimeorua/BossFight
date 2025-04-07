@@ -8,6 +8,7 @@
 #include "InteractableProp.generated.h"
 
 class UBoxComponent;
+class UBFWidgetBase;
 
 UCLASS()
 class BOSSFIGHT_API AInteractableProp : public APropBase, public IInteractablePropInterface
@@ -16,11 +17,20 @@ class BOSSFIGHT_API AInteractableProp : public APropBase, public IInteractablePr
 public:
 	AInteractableProp();
 	virtual void Interact() override;
-	UFUNCTION(BlueprintCallable)
 	virtual void InteractEnd() override;
 protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Collision")
 	UBoxComponent* CollisionBox;
 
+	UPROPERTY(EditDefaultsOnly, Category = "Target Lock")
+	TSubclassOf<UBFWidgetBase>PropWidgetClass;
+
+	UPROPERTY()
+	UBFWidgetBase* PropWidget;
+
 	void BeginPlay() override;
+
+public:
+	UFUNCTION(BlueprintCallable)
+	void ShowPropUI();
 };

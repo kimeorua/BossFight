@@ -32,3 +32,8 @@ void ABFBaseCharacter::PossessedBy(AController* NewController)
 		ensureMsgf(!CharacterStartUpData.IsNull(), TEXT("Forgat to assign start up data to %s"), *GetName());
 	}
 }
+
+UPawnUIComponent* ABFBaseCharacter::GetPawnUIComponent() const
+{
+	return nullptr;
+}

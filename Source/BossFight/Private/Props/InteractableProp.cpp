@@ -3,6 +3,7 @@
 
 #include "Props/InteractableProp.h"
 #include "Components/BoxComponent.h"
+#include "Widget/BFWidgetBase.h"
 
 AInteractableProp::AInteractableProp()
 {
@@ -20,10 +21,23 @@ void AInteractableProp::Interact()
 
 void AInteractableProp::InteractEnd()
 {
-	CollisionBox->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+	DeactivateProp();
 }
 
 void AInteractableProp::BeginPlay()
 {
 	Super::AActor::BeginPlay();
+}
+
+void AInteractableProp::ShowPropUI()
+{
+	if (PropWidgetClass)
+	{
+		PropWidget = CreateWidget<UBFWidgetBase>(GetWorld(), PropWidgetClass);
+
+		if (IsValid(PropWidget))
+		{
+			PropWidget->AddToViewport();
+		}
+	}
 }

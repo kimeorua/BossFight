@@ -39,3 +39,37 @@ void UBFFunctionLibrary::BP_DoseActorHaveTag(AActor* InActor, FGameplayTag TagTo
 {
 	OutConfirmType = NativeDoseActorHaveTag(InActor, TagToCheck) ? EBFConfirmType::Yes : EBFConfirmType::No;
 }
+
+void UBFFunctionLibrary::ToggleInputMode(const UObject* WorldContextObject, EBFInputMode InInputMode)
+{
+	APlayerController* PlayerController = nullptr;
+	if (GEngine)
+	{
+		UWorld* World = GEngine->GetWorldFromContextObject(WorldContextObject, EGetWorldErrorMode::LogAndReturnNull);
+
+		if (World)
+		{
+			PlayerController = World->GetFirstPlayerController();
+		}
+	}
+	if (!PlayerController) { return; }
+
+	FInputModeGameOnly GameOnlyMode;
+	FInputModeUIOnly UIOnly;
+
+	switch (InInputMode)
+	{
+
+	case EBFInputMode::GameOnly:
+		PlayerController->SetInputMode(GameOnlyMode);
+		PlayerController->bShowMouseCursor = false;
+
+		break;
+	case EBFInputMode::UIOnly:
+		PlayerController->SetInputMode(UIOnly);
+		PlayerController->bShowMouseCursor = true;
+		break;
+	default:
+		break;
+	}
+}

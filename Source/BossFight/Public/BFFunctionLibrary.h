@@ -27,4 +27,7 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Warrior | Function Library", meta = (DisplayName = "Dose Actor Have Tag", ExpandEnumAsExecs = "OutConfirmType"))
 	static void BP_DoseActorHaveTag(AActor* InActor, FGameplayTag TagToCheck, EBFConfirmType& OutConfirmType);
+
+	UFUNCTION(BlueprintCallable, Category = "Warrior | Function Library", meta = (WorldContext = "WorldContextObject"))
+	static void ToggleInputMode(const UObject* WorldContextObject, EBFInputMode InInputMode);
 };

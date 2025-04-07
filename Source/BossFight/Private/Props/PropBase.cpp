@@ -11,6 +11,10 @@ APropBase::APropBase()
 	Mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
 	RootComponent = Mesh;
 }
+void APropBase::DeactivateProp_Implementation()
+{
+	// Default implementation does nothing
+}
 void APropBase::ActivateProp_Implementation()
 {
 	// Default implementation does nothing

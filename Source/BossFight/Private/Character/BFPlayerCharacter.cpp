@@ -14,6 +14,7 @@
 #include "AbilitySystem/BFAbilitySystemComponent.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Interface/InteractablePropInterface.h"
+#include "Component/UI/PlayerUIComponent.h"
 
 ABFPlayerCharacter::ABFPlayerCharacter()
 {
@@ -37,6 +38,8 @@ ABFPlayerCharacter::ABFPlayerCharacter()
 	GetCharacterMovement()->RotationRate = FRotator(0.0f, 500.0f, 0.0f);
 	GetCharacterMovement()->MaxWalkSpeed = 250.0f;
 	GetCharacterMovement()->BrakingDecelerationWalking = 2000.0f;
+
+	PlayerUIComponent = CreateDefaultSubobject<UPlayerUIComponent>(TEXT("PlayerUIComponent"));
 }
 
 void ABFPlayerCharacter::BeginPlay()
@@ -55,6 +58,16 @@ void ABFPlayerCharacter::PossessedBy(AController* NewController)
 			LodedData->GiveToAbilitySystemComponent(BFAbilitySystemComponent);
 		}
 	}
+}
+
+UPawnUIComponent* ABFPlayerCharacter::GetPawnUIComponent() const
+{
+	return GetPlayerUIComponent();
+}
+
+UPlayerUIComponent* ABFPlayerCharacter::GetPlayerUIComponent() const
+{
+	return PlayerUIComponent;
 }
 
 void ABFPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
@@ -135,6 +148,7 @@ void ABFPlayerCharacter::Input_Interection()
 		if (IInteractablePropInterface* InteractableProp = Cast<IInteractablePropInterface>(HitResult.GetActor()))
 		{
 			InteractableProp->Interact();
+			PlayerUIComponent->SetInteractableProp(HitResult.GetActor());
 		}
 		else { return; }
 	}

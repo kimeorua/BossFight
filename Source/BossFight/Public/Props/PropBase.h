@@ -23,4 +23,6 @@ public:
 
 	UFUNCTION(BlueprintNativeEvent)
 	void ActivateProp();
+	UFUNCTION(BlueprintNativeEvent)
+	void DeactivateProp();
 };
