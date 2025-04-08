@@ -7,7 +7,7 @@
 #include "BFGameplayAbility.generated.h"
 
 UENUM(BlueprintType)
-enum class EWrriorAbilityActivationPolicy : uint8
+enum class EBFAbilityActivationPolicy : uint8
 {
 	OnTriggered,
 	OnGiven
@@ -27,7 +27,7 @@ protected:
 	//~ End UGameplayAbility
 
 	UPROPERTY(EditDefaultsOnly, Category = "Ability")
-	EWrriorAbilityActivationPolicy AbilityActivationPolicy = EWrriorAbilityActivationPolicy::OnTriggered;
+	EBFAbilityActivationPolicy AbilityActivationPolicy = EBFAbilityActivationPolicy::OnTriggered;
 
 	UFUNCTION(BlueprintPure, Category = "Wrroir | Ability")
 	UBFAbilitySystemComponent* GetBFAbilitySystemComponentFromActorInfo() const;

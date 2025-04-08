@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "AbilitySystemInterface.h"
 #include "Interface/PawnUIInterface.h"
+#include "Interface/PawnEquipmentInterface.h"
 #include "BFBaseCharacter.generated.h"
 
 class UBFAbilitySystemComponent;
@@ -13,7 +14,7 @@ class UBFAttributeSet;
 class UDataAsset_StartUpBase;
 
 UCLASS()
-class BOSSFIGHT_API ABFBaseCharacter : public ACharacter, public IAbilitySystemInterface, public IPawnUIInterface
+class BOSSFIGHT_API ABFBaseCharacter : public ACharacter, public IAbilitySystemInterface, public IPawnUIInterface, public IPawnEquipmentInterface
 {
 	GENERATED_BODY()
 
@@ -32,6 +33,10 @@ protected:
 	//~ Begin IPawnUIInterface
 	virtual UPawnUIComponent* GetPawnUIComponent() const override;
 	//~ End IPawnUIInterface
+
+	//~ Begin IPawnEquipmentInterface
+	virtual UPawnEquipmentComponent* GetPawnEquipmentComponent() const override;
+	//~ End IPawnEquipmentInterface
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AbilitySystem")
 	UBFAbilitySystemComponent* BFAbilitySystemComponent;

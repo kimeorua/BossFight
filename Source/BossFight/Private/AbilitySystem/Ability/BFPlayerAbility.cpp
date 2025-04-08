@@ -4,6 +4,7 @@
 #include "AbilitySystem/Ability/BFPlayerAbility.h"
 #include "Controller/BFPlayerController.h"
 #include "Character/BFPlayerCharacter.h"
+#include "Component/Equipment/PlayerEquipmentComponent.h"
 
 ABFPlayerCharacter* UBFPlayerAbility::GetPlayerCharacterFromActorInfo()
 {
@@ -21,4 +22,13 @@ ABFPlayerController* UBFPlayerAbility::GetPlayerControllerFromActorInfo()
 		CachedPlayerController = Cast<ABFPlayerController>(CurrentActorInfo->PlayerController);
 	}
 	return CachedPlayerController.IsValid() ? CachedPlayerController.Get() : nullptr;
+}
+
+UPlayerEquipmentComponent* UBFPlayerAbility::GetPlayerEquipmentComponentFromActorInfo()
+{
+	if (IPawnEquipmentInterface* PawnEquipmentInterface = Cast<IPawnEquipmentInterface>(GetPlayerCharacterFromActorInfo()))
+	{ 
+		return PawnEquipmentInterface->GetPlayerEquipmentComponent(); 
+	}
+	else { return nullptr; }
 }

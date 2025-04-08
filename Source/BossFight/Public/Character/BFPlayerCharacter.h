@@ -11,6 +11,7 @@ class USpringArmComponent;
 class UCameraComponent;
 class UDataAsset_InputConfig;
 class UPlayerUIComponent;
+class UPlayerEquipmentComponent;
 
 struct FInputActionValue;
 
@@ -33,6 +34,11 @@ protected:
 	virtual UPlayerUIComponent* GetPlayerUIComponent() const override;
 	//~ End IPawnUIInterface
 
+	//~ Begin IPawnEquipmentInterface
+	virtual UPawnEquipmentComponent* GetPawnEquipmentComponent() const override;
+	virtual UPlayerEquipmentComponent* GetPlayerEquipmentComponent() const override;
+	//~ End IPawnEquipmentInterface
+
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 private:
@@ -46,6 +52,9 @@ private:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UIComponent", meta = (AllowPrivateAccess = "true"))
 	UPlayerUIComponent* PlayerUIComponent;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "EquipmentComponent", meta = (AllowPrivateAccess = "true"))
+	UPlayerEquipmentComponent* PlayerEquipmentComponent;
 
 #pragma endregion
 

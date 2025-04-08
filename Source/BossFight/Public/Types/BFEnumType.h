@@ -12,3 +12,10 @@ enum class EBFInputMode : uint8
 	GameOnly,
 	UIOnly
 };
+
+UENUM(BlueprintType)
+enum class EBFWeaponType : uint8
+{
+	WeaponLeft,
+	WeaponRight
+};

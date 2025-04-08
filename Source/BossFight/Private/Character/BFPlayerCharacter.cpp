@@ -15,6 +15,7 @@
 #include "Kismet/KismetSystemLibrary.h"
 #include "Interface/InteractablePropInterface.h"
 #include "Component/UI/PlayerUIComponent.h"
+#include "Component/Equipment/PlayerEquipmentComponent.h"
 
 ABFPlayerCharacter::ABFPlayerCharacter()
 {
@@ -40,6 +41,7 @@ ABFPlayerCharacter::ABFPlayerCharacter()
 	GetCharacterMovement()->BrakingDecelerationWalking = 2000.0f;
 
 	PlayerUIComponent = CreateDefaultSubobject<UPlayerUIComponent>(TEXT("PlayerUIComponent"));
+	PlayerEquipmentComponent = CreateDefaultSubobject<UPlayerEquipmentComponent>(TEXT("PlayerEquipmentComponent"));
 }
 
 void ABFPlayerCharacter::BeginPlay()
@@ -68,6 +70,16 @@ UPawnUIComponent* ABFPlayerCharacter::GetPawnUIComponent() const
 UPlayerUIComponent* ABFPlayerCharacter::GetPlayerUIComponent() const
 {
 	return PlayerUIComponent;
+}
+
+UPawnEquipmentComponent* ABFPlayerCharacter::GetPawnEquipmentComponent() const
+{
+	return GetPlayerEquipmentComponent();
+}
+
+UPlayerEquipmentComponent* ABFPlayerCharacter::GetPlayerEquipmentComponent() const
+{
+	return PlayerEquipmentComponent;
 }
 
 void ABFPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)

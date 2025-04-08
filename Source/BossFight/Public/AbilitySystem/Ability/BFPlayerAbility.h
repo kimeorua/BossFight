@@ -8,6 +8,7 @@
 
 class ABFPlayerCharacter;
 class ABFPlayerController;
+class UPlayerEquipmentComponent;
 
 UCLASS()
 class BOSSFIGHT_API UBFPlayerAbility : public UBFGameplayAbility
@@ -20,6 +21,9 @@ public:
 
 	UFUNCTION(BlueprintPure, Category = "BossFight | Ability")
 	ABFPlayerController* GetPlayerControllerFromActorInfo();
+
+	UFUNCTION(BlueprintPure, Category = "BossFight | Ability")
+	UPlayerEquipmentComponent* GetPlayerEquipmentComponentFromActorInfo();
 
 private:
 	TWeakObjectPtr<ABFPlayerCharacter> CachedPlayerCharacter;

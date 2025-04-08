@@ -37,3 +37,8 @@ UPawnUIComponent* ABFBaseCharacter::GetPawnUIComponent() const
 {
 	return nullptr;
 }
+
+UPawnEquipmentComponent* ABFBaseCharacter::GetPawnEquipmentComponent() const
+{
+	return nullptr;
+}
