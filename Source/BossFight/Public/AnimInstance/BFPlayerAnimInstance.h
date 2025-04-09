@@ -20,4 +20,7 @@ public:
 protected:
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "Anim Data | Refrence")
 	ABFPlayerCharacter* OwningPlayerCharacter;
+
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "Anim Data | Refrence")
+	bool bIsEquipWeapon;
 };

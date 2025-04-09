@@ -3,9 +3,12 @@
 #pragma once
 
 #include "GameplayTagContainer.h"
+#include "AnimInstance/BFAnimLinkedLayer.h"
 #include "BossFightStructs.generated.h"
 
 class UBFPlayerAbility;
+class UBFAnimLinkedLayer;
+class UInputMappingContext;
 
 USTRUCT(BlueprintType)
 struct FBFAbilitySet 

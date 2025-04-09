@@ -16,7 +16,7 @@ class BOSSFIGHT_API UPawnEquipmentComponent : public UPawnExtensionComponent
 
 public:
 	UFUNCTION(BlueprintCallable, Category = "Equipment")
-	void RegisterWeapon(AWeaponBase* NewWeapon);
+	virtual void RegisterWeapon(TArray<AWeaponBase*> NewWeapon);
 
 protected:
 	TMap<EBFWeaponType, AWeaponBase*> CurrentWeaponMap;

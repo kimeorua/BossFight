@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Props/Weapon/WeaponBase.h"
+#include "Types/BossFightStructs.h"
 #include "PlayerWeapon.generated.h"
 
 /**
@@ -13,5 +14,4 @@ UCLASS()
 class BOSSFIGHT_API APlayerWeapon : public AWeaponBase
 {
 	GENERATED_BODY()
-	
 };

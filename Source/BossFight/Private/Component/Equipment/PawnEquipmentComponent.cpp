@@ -4,14 +4,18 @@
 #include "Component/Equipment/PawnEquipmentComponent.h"
 #include "Props/Weapon/WeaponBase.h"
 
-void UPawnEquipmentComponent::RegisterWeapon(AWeaponBase* NewWeapon)
+void UPawnEquipmentComponent::RegisterWeapon(TArray<AWeaponBase*> NewWeapon)
 {
 	if (!CurrentWeaponMap.IsEmpty())
 	{
+		for (TPair Pair : CurrentWeaponMap)
+		{
+			Pair.Value->Destroy();
+		}
 		CurrentWeaponMap.Empty();
 	}
-	if (NewWeapon)
+	for (AWeaponBase* Weapon : NewWeapon)
 	{
-		CurrentWeaponMap.Add(NewWeapon->GetWeaponType(), NewWeapon);
+		CurrentWeaponMap.Add(Weapon->GetWeaponType(), Weapon);
 	}
 }
