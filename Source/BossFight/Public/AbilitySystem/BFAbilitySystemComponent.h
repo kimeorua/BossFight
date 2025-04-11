@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "AbilitySystemComponent.h"
+#include "Types/BossFightStructs.h"
 #include "BFAbilitySystemComponent.generated.h"
 
 /**
@@ -16,4 +17,8 @@ class BOSSFIGHT_API UBFAbilitySystemComponent : public UAbilitySystemComponent
 public:
 	void OnAbilityInputPressed(const FGameplayTag& InInputTag);
 	void OnAbilityInputReleased(const FGameplayTag& InInputTag);
+
+	void GrantPlayerWeaponAbilities(const TArray<FBFAbilitySet>& PlayerWeaponAbilities, TArray<FGameplayAbilitySpecHandle>& OutGrantAbilitySpecHandles, int32 ApplyLevel = 1);
+
+	void RemoveGrantPlayerWeaponAbilities(TArray<FGameplayAbilitySpecHandle>& InSpecHandleToRemove);
 };

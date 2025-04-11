@@ -24,3 +24,12 @@ public:
 
 	bool IsVaild()const;
 };
+
+USTRUCT(BlueprintType)
+struct FBFPlayerWeaponData
+{
+	GENERATED_BODY()
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, meta = (TitleProperty = "InputTag"))
+	TArray<FBFAbilitySet>WeaponAbilities;
+};
