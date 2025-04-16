@@ -11,6 +11,7 @@ namespace BFGameplayTag
 	UE_DEFINE_GAMEPLAY_TAG(InputTag_Interaction, "InputTag.Interaction");
 	UE_DEFINE_GAMEPLAY_TAG(InputTag_ComboAttack, "InputTag.ComboAttack");
 	UE_DEFINE_GAMEPLAY_TAG(InputTag_PowerAttack, "InputTag.PowerAttack");
+	UE_DEFINE_GAMEPLAY_TAG(InputTag_DerivAttack, "InputTag.DerivAttack");
 
 	UE_DEFINE_GAMEPLAY_TAG(InputTag_Hold, "InputTag.Hold");
 	UE_DEFINE_GAMEPLAY_TAG(InputTag_Hold_Dash, "InputTag.Hold.Dash");
@@ -24,6 +25,7 @@ namespace BFGameplayTag
 	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_Combo_2, "Player.Ability.Combo.2");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_Combo_3, "Player.Ability.Combo.3");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_Combo_4, "Player.Ability.Combo.4");
+	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_Combo_Deriv, "Player.Ability.Combo.Deriv");
 
 	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_PowerAttack, "Player.Ability.PowerAttack");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_PowerAttack_Combo1, "Player.Ability.PowerAttack.Combo1");
@@ -40,6 +42,7 @@ namespace BFGameplayTag
 	UE_DEFINE_GAMEPLAY_TAG(Player_Status_Charge, "Player.Status.Charge");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Status_Charge_1, "Player.Status.Charge.1");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Status_Charge_2, "Player.Status.Charge.2");
+	UE_DEFINE_GAMEPLAY_TAG(Player_Status_Derivable, "Player.Status.Derivable");
 
 	UE_DEFINE_GAMEPLAY_TAG(Player_Event_ReadyCombo, "Player.Event.ReadyCombo");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Event_EndCombo, "Player.Event.EndCombo");
