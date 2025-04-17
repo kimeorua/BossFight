@@ -8,6 +8,7 @@
 
 class UPawnEquipmentComponent;
 class UPlayerEquipmentComponent;
+class UEnemyEquipmentComponent;
 
 // This class does not need to be modified.
 UINTERFACE(MinimalAPI)
@@ -16,9 +17,7 @@ class UPawnEquipmentInterface : public UInterface
 	GENERATED_BODY()
 };
 
-/**
- * 
- */
+
 class BOSSFIGHT_API IPawnEquipmentInterface
 {
 	GENERATED_BODY()
@@ -27,4 +26,5 @@ class BOSSFIGHT_API IPawnEquipmentInterface
 public:
 	virtual UPawnEquipmentComponent* GetPawnEquipmentComponent() const = 0;
 	virtual UPlayerEquipmentComponent* GetPlayerEquipmentComponent() const;
+	virtual UEnemyEquipmentComponent* GetEnemyEquipmentComponent() const;
 };

@@ -75,6 +75,7 @@ private:
 
 #pragma endregion
 
+#pragma region Interaction
 	UPROPERTY(EditDefaultsOnly, Category = "Interaction", meta = (AllowPrivateAccess = "true"))
 	float InteractionDistance = 100.f;
 
@@ -83,4 +84,5 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Interaction", meta = (AllowPrivateAccess = "true"))
 	bool bShowPersistenDebugShape = false;
+#pragma endregion
 };

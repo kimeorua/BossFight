@@ -9,3 +9,8 @@ UPlayerEquipmentComponent* IPawnEquipmentInterface::GetPlayerEquipmentComponent(
 {
 	return nullptr;
 }
+
+UEnemyEquipmentComponent* IPawnEquipmentInterface::GetEnemyEquipmentComponent() const
+{
+	return nullptr;
+}
