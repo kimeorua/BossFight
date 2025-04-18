@@ -8,7 +8,7 @@
 #include "Character/BFPlayerCharacter.h"
 #include "AbilitySystem/BFAbilitySystemComponent.h"
 
-APlayerWeapon* UPlayerEquipmentComponent::GetPlayerCurrentWeapon(EBFWeaponType Type) const
+APlayerWeapon* UPlayerEquipmentComponent::GetPlayerCurrentWeapon(EBFEquipType Type) const
 {
 	return Cast<APlayerWeapon>( CurrentWeaponMap.FindRef(Type));
 }
@@ -31,7 +31,7 @@ void UPlayerEquipmentComponent::RegisterWeapon(TArray<AWeaponBase*> NewWeapon)
 	}
 	for (AWeaponBase* Weapon : NewWeapon)
 	{
-		CurrentWeaponMap.Add(Weapon->GetWeaponType(), Weapon);
+		CurrentWeaponMap.Add(Weapon->GetEquipType(), Weapon);
 		APlayerWeapon* PlayerWeapon = Cast<APlayerWeapon>(Weapon);
 		TArray<FGameplayAbilitySpecHandle> SpecHandles;
 		ASC->GrantPlayerWeaponAbilities(PlayerWeapon->WeaponData.WeaponAbilities, SpecHandles);

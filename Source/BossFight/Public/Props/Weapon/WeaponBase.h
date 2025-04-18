@@ -17,11 +17,11 @@ class BOSSFIGHT_API AWeaponBase : public APropBase
 public:
 	AWeaponBase();
 
-	FORCEINLINE EBFWeaponType GetWeaponType() const { return WeaponType; }
+	FORCEINLINE EBFEquipType GetEquipType() const { return EquipType; }
 
 protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	EBFWeaponType WeaponType;
+	EBFEquipType EquipType = EBFEquipType::EquipRight;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	UBoxComponent* WeaponCollision;

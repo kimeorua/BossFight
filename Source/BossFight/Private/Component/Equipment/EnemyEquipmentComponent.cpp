@@ -2,8 +2,13 @@
 
 
 #include "Component/Equipment/EnemyEquipmentComponent.h"
+#include "Props/Weapon/EnemyWeapon.h"
 
 void UEnemyEquipmentComponent::RegisterWeapon(TArray<AWeaponBase*> NewWeapon)
 {
-	// TODO Ability에서 무기 스폰 및 CurrentWeaponMap에 등록 하기
+	for (AWeaponBase* Weapon : NewWeapon)
+	{
+		if (CurrentWeaponMap.Contains(Weapon->GetEquipType())) { continue; }
+		CurrentWeaponMap.Add(Weapon->GetEquipType(), Weapon);
+	}
 }

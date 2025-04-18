@@ -6,6 +6,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Component/Equipment/EnemyEquipmentComponent.h"
 #include "Component/UI/EnemyUIComponent.h"
+#include "DataAsset/StartUp/DataAsset_StartUpEnemy.h"
 
 ABFEnemyCharacter::ABFEnemyCharacter()
 {
@@ -32,6 +33,13 @@ void ABFEnemyCharacter::BeginPlay()
 void ABFEnemyCharacter::PossessedBy(AController* NewController)
 {
 	Super::PossessedBy(NewController);
+	if (!CharacterStartUpData.IsNull())
+	{
+		if (UDataAsset_StartUpBase* LodedData = CharacterStartUpData.LoadSynchronous())
+		{
+			LodedData->GiveToAbilitySystemComponent(BFAbilitySystemComponent);
+		}
+	}
 }
 
 UPawnUIComponent* ABFEnemyCharacter::GetPawnUIComponent() const

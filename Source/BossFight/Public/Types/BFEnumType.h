@@ -14,8 +14,8 @@ enum class EBFInputMode : uint8
 };
 
 UENUM(BlueprintType)
-enum class EBFWeaponType : uint8
+enum class EBFEquipType : uint8
 {
-	WeaponLeft,
-	WeaponRight
+	EquipLeft,
+	EquipRight
 };

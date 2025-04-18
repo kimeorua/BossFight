@@ -15,7 +15,7 @@ class BOSSFIGHT_API UPlayerEquipmentComponent : public UPawnEquipmentComponent
 
 public:
 	UFUNCTION(BlueprintPure, Category = "Equipment")
-	APlayerWeapon* GetPlayerCurrentWeapon(EBFWeaponType Type) const;
+	APlayerWeapon* GetPlayerCurrentWeapon(EBFEquipType Type) const;
 
 	virtual void RegisterWeapon(TArray<AWeaponBase*> NewWeapon) override;
 };

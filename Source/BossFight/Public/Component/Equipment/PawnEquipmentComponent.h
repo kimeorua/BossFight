@@ -19,5 +19,5 @@ public:
 	virtual void RegisterWeapon(TArray<AWeaponBase*> NewWeapon);
 
 protected:
-	TMap<EBFWeaponType, AWeaponBase*> CurrentWeaponMap;
+	TMap<EBFEquipType, AWeaponBase*> CurrentWeaponMap;
 };
