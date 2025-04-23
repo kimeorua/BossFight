@@ -4,10 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "AnimInstance/BFCharacterAnimInstance.h"
-#include "Types/BFEnumType.h"
 #include "BFEnemyAnimInstance.generated.h"
 
 class ABFEnemyCharacter;
+class AEnemyAIController;
 
 UCLASS()
 class BOSSFIGHT_API UBFEnemyAnimInstance : public UBFCharacterAnimInstance
@@ -23,8 +23,8 @@ protected:
 	ABFEnemyCharacter* OwningEnemyCharacter;
 
 	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "Anim Data | Refrence")
-	bool bIsStrafing = false;
+	AEnemyAIController* OwningAIController;
 
-private:
-	EBFEnemyAIState AIState = EBFEnemyAIState::Idle;
+	UPROPERTY(VisibleDefaultsOnly, BlueprintReadOnly, Category = "Anim Data | Refrence")
+	bool bIsStrafing = false;
 };

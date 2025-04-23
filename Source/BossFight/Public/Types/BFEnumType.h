@@ -26,5 +26,6 @@ enum class EBFEnemyAIState : uint8
 	Idle,
 	Strafing,
 	Chase,
-	Attack
+	Attack,
+	None
 };

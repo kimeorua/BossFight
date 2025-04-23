@@ -3,6 +3,8 @@
 
 #include "AnimInstance/BFEnemyAnimInstance.h"
 #include "Character/BFEnemyCharacter.h"
+#include "Controller/EnemyAIController.h"
+#include "Types/BFEnumType.h"
 
 void UBFEnemyAnimInstance::NativeInitializeAnimation()
 {
@@ -10,6 +12,7 @@ void UBFEnemyAnimInstance::NativeInitializeAnimation()
 	if (OwningCharacter)
 	{
 		OwningEnemyCharacter = Cast<ABFEnemyCharacter>(OwningCharacter);
+		OwningAIController = Cast<AEnemyAIController>(OwningEnemyCharacter->GetController());
 	}
 }
 
@@ -19,6 +22,9 @@ void UBFEnemyAnimInstance::NativeThreadSafeUpdateAnimation(float DeltaSeconds)
 
 	if (OwningEnemyCharacter)
 	{
-		bIsStrafing = (AIState == EBFEnemyAIState::Strafing) ? true : false;
+		if (OwningAIController)
+		{
+			bIsStrafing = (OwningAIController->GetAIState() == EBFEnemyAIState::Strafing);
+		}
 	}
 }
