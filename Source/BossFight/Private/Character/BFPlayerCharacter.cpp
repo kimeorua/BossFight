@@ -16,6 +16,9 @@
 #include "Interface/InteractablePropInterface.h"
 #include "Component/UI/PlayerUIComponent.h"
 #include "Component/Equipment/PlayerEquipmentComponent.h"
+#include "AbilitySystem/BFAttributeSet.h"
+
+#include "DebugHelper.h"
 
 ABFPlayerCharacter::ABFPlayerCharacter()
 {

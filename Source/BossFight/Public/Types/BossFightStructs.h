@@ -4,11 +4,13 @@
 
 #include "GameplayTagContainer.h"
 #include "AnimInstance/BFAnimLinkedLayer.h"
+#include "AttributeSet.h"
 #include "BossFightStructs.generated.h"
 
 class UBFPlayerAbility;
 class UBFAnimLinkedLayer;
 class UInputMappingContext;
+class UAttributeSet;
 
 USTRUCT(BlueprintType)
 struct FBFAbilitySet 

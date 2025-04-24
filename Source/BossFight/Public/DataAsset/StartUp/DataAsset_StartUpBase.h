@@ -8,6 +8,7 @@
 
 class UBFGameplayAbility;
 class UBFAbilitySystemComponent;
+class UGameplayEffect;
 
 UCLASS()
 class BOSSFIGHT_API UDataAsset_StartUpBase : public UDataAsset
@@ -22,6 +23,9 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, Category = "StartUpData")
 	TArray<TSubclassOf<UBFGameplayAbility>> ActivateOnTriggerdAbilities;
+
+	UPROPERTY(EditDefaultsOnly, Category = "StartUpData")
+	TArray < TSubclassOf<UGameplayEffect>> StartUpGameplayEffects;
 
 	void GrantAbilities(const TArray<TSubclassOf<UBFGameplayAbility>>& InAbilityToGive, UBFAbilitySystemComponent* InASCToGive, int32 ApplyLevel = 1);
 };

@@ -4,10 +4,13 @@
 #include "AbilitySystem/BFAttributeSet.h"
 #include "GameplayEffectExtension.h"
 
+#include "DebugHelper.h"
+
 UBFAttributeSet::UBFAttributeSet()
 {
 	InitCurrentHP(1.0f);
 	InitMaxHP(1.0f);
+	InitCurrentStun(0.0f);
 }
 
 void UBFAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data)
@@ -18,9 +21,9 @@ void UBFAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallback
 		SetCurrentHP(NewCurrentHP);
 	}
 
-	if (Data.EvaluatedData.Attribute == GetMaxHPAttribute())
+	if (Data.EvaluatedData.Attribute == GetCurrentStunAttribute())
 	{
-		const float NewMaxHP = FMath::Clamp(GetMaxHP(), 0.0f, 200.0f);
+		const float NewMaxHP = FMath::Clamp(GetMaxHP(), 0.0f, 100.0f);
 		SetMaxHP(NewMaxHP);
 	}
 }

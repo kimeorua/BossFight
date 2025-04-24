@@ -30,4 +30,8 @@ public:
 	FGameplayAttributeData MaxHP;
 	ATTRIBUTE_ACCESSORS(UBFAttributeSet, MaxHP)
 
+	UPROPERTY(BlueprintReadOnly, Category = "Stun")
+	FGameplayAttributeData CurrentStun;
+	ATTRIBUTE_ACCESSORS(UBFAttributeSet, CurrentStun)
+
 };

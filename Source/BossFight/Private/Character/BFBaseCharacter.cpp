@@ -5,6 +5,8 @@
 #include "AbilitySystem/BFAbilitySystemComponent.h"
 #include "AbilitySystem/BFAttributeSet.h"
 
+#include "DebugHelper.h"
+
 // Sets default values
 ABFBaseCharacter::ABFBaseCharacter()
 {
