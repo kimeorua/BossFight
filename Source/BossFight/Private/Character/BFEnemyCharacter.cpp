@@ -7,6 +7,7 @@
 #include "Component/Equipment/EnemyEquipmentComponent.h"
 #include "Component/UI/EnemyUIComponent.h"
 #include "DataAsset/StartUp/DataAsset_StartUpEnemy.h"
+#include "AbilitySystem/BFEnemyAttributeSet.h"
 
 ABFEnemyCharacter::ABFEnemyCharacter()
 {
@@ -23,6 +24,8 @@ ABFEnemyCharacter::ABFEnemyCharacter()
 
 	EnemyEquipmentComponent = CreateDefaultSubobject<UEnemyEquipmentComponent>(TEXT("EnemyEquipmentComponent"));
 	EnemyUIComponent = CreateDefaultSubobject<UEnemyUIComponent>(TEXT("EnemyUIComponent"));
+
+	BFEnemyAttributeSet = CreateDefaultSubobject<UBFEnemyAttributeSet>(TEXT("BFEnemyAttributeSet"));
 }
 
 void ABFEnemyCharacter::BeginPlay()

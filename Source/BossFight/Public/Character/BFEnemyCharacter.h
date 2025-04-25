@@ -8,6 +8,7 @@
 
 class UEnemyEquipmentComponent;
 class UEnemyUIComponent;
+class UBFEnemyAttributeSet;
 
 UCLASS()
 class BOSSFIGHT_API ABFEnemyCharacter : public ABFBaseCharacter
@@ -41,4 +42,10 @@ private:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "UI Component", meta = (AllowPrivateAccess = "true"))
 	UEnemyUIComponent* EnemyUIComponent;
+#pragma endregion
+
+#pragma region EnemyAttributeSet
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AbilitySystem", meta = (AllowPrivateAccess = "true"))
+	UBFEnemyAttributeSet* BFEnemyAttributeSet;
+#pragma endregion
 };

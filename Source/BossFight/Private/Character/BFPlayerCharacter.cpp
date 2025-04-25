@@ -16,7 +16,7 @@
 #include "Interface/InteractablePropInterface.h"
 #include "Component/UI/PlayerUIComponent.h"
 #include "Component/Equipment/PlayerEquipmentComponent.h"
-#include "AbilitySystem/BFAttributeSet.h"
+#include "AbilitySystem/BFPlayerAttributeSet.h"
 
 #include "DebugHelper.h"
 
@@ -45,6 +45,8 @@ ABFPlayerCharacter::ABFPlayerCharacter()
 
 	PlayerUIComponent = CreateDefaultSubobject<UPlayerUIComponent>(TEXT("PlayerUIComponent"));
 	PlayerEquipmentComponent = CreateDefaultSubobject<UPlayerEquipmentComponent>(TEXT("PlayerEquipmentComponent"));
+
+	BFPlayerAttributeSet = CreateDefaultSubobject<UBFPlayerAttributeSet>(TEXT("BFPlayerAttributeSet"));
 }
 
 void ABFPlayerCharacter::BeginPlay()

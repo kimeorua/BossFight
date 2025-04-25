@@ -12,6 +12,7 @@ class UCameraComponent;
 class UDataAsset_InputConfig;
 class UPlayerUIComponent;
 class UPlayerEquipmentComponent;
+class UBFPlayerAttributeSet;
 
 struct FInputActionValue;
 
@@ -22,6 +23,7 @@ class BOSSFIGHT_API ABFPlayerCharacter : public ABFBaseCharacter
 
 public:
 	ABFPlayerCharacter();
+	FORCEINLINE UBFPlayerAttributeSet* GetBFPlayerAttributeSet() const { return BFPlayerAttributeSet; }
 
 protected:
 	//~ Begin APawn Interface.
@@ -84,5 +86,10 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Interaction", meta = (AllowPrivateAccess = "true"))
 	bool bShowPersistenDebugShape = false;
+#pragma endregion
+
+#pragma region PlayerAttributeSet
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AbilitySystem", meta = (AllowPrivateAccess = "true"))
+	UBFPlayerAttributeSet* BFPlayerAttributeSet;
 #pragma endregion
 };
