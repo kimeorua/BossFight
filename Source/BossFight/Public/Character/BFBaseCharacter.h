@@ -7,14 +7,16 @@
 #include "AbilitySystemInterface.h"
 #include "Interface/PawnUIInterface.h"
 #include "Interface/PawnEquipmentInterface.h"
+#include "Interface/PawnCombetInterface.h"
 #include "BFBaseCharacter.generated.h"
 
 class UBFAbilitySystemComponent;
 class UBFAttributeSet;
 class UDataAsset_StartUpBase;
+class UPawnCombetComponent;
 
 UCLASS()
-class BOSSFIGHT_API ABFBaseCharacter : public ACharacter, public IAbilitySystemInterface, public IPawnUIInterface, public IPawnEquipmentInterface
+class BOSSFIGHT_API ABFBaseCharacter : public ACharacter, public IAbilitySystemInterface, public IPawnUIInterface, public IPawnEquipmentInterface, public IPawnCombetInterface
 {
 	GENERATED_BODY()
 
@@ -38,6 +40,9 @@ protected:
 	virtual UPawnEquipmentComponent* GetPawnEquipmentComponent() const override;
 	//~ End IPawnEquipmentInterface
 
+	// ~Begin IPawnCombetInterface
+	virtual UPawnCombetComponent* GetCombetComponent() const override;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AbilitySystem")
 	UBFAbilitySystemComponent* BFAbilitySystemComponent;
 
@@ -46,6 +51,9 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Character Data")
 	TSoftObjectPtr<UDataAsset_StartUpBase> CharacterStartUpData;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Combet")
+	UPawnCombetComponent* CombetComponent;
 
 public:
 	FORCEINLINE UBFAbilitySystemComponent* GetBFAbilitySystemComponent() const { return BFAbilitySystemComponent; }

@@ -41,3 +41,20 @@ struct FBFPlayerWeaponData
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	TSubclassOf<UBFAnimLinkedLayer> WeaponAnimLayerClass;
 };
+
+USTRUCT(BlueprintType)
+struct FBFWeaponCollisionData
+{
+	GENERATED_USTRUCT_BODY()
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	FName StartSocket;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	FName EndSocket;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	bool bIsShow = false;
+
+	bool IsVaild();
+};

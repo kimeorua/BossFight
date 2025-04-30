@@ -21,6 +21,11 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	FBFPlayerWeaponData WeaponData;
 
+	virtual void AttackTrace() override;
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FBFWeaponCollisionData CollisionData;
+
 private:
 	TArray<FGameplayAbilitySpecHandle>GrantAbilitySpecHandles;
 };

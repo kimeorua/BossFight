@@ -14,3 +14,7 @@ AWeaponBase::AWeaponBase()
 
 	Mesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 }
+
+void AWeaponBase::AttackTrace()
+{
+}

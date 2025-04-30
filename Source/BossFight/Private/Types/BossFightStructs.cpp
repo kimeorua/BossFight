@@ -8,3 +8,8 @@ bool FBFAbilitySet::IsVaild() const
 {
 	return InputTag.IsValid() && AbilityToGrant;
 }
+
+bool FBFWeaponCollisionData::IsVaild()
+{
+	return StartSocket.IsValid() && EndSocket.IsValid();
+}

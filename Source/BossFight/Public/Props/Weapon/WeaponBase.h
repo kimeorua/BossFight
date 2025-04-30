@@ -5,12 +5,13 @@
 #include "CoreMinimal.h"
 #include "Props/PropBase.h"
 #include "Types/BFEnumType.h"
+#include "Interface/WeaponInterface.h"
 #include "WeaponBase.generated.h"
 
 class UBoxComponent;
 
 UCLASS()
-class BOSSFIGHT_API AWeaponBase : public APropBase
+class BOSSFIGHT_API AWeaponBase : public APropBase, public IWeaponInterface
 {
 	GENERATED_BODY()
 	
@@ -18,6 +19,8 @@ public:
 	AWeaponBase();
 
 	FORCEINLINE EBFEquipType GetEquipType() const { return EquipType; }
+
+	virtual void AttackTrace() override;
 
 protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)

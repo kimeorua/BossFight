@@ -18,6 +18,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Equipment")
 	virtual void RegisterWeapon(TArray<AWeaponBase*> NewWeapon);
 
+	FORCEINLINE AWeaponBase* GetCurrentWeapon(EBFEquipType Type) const { return CurrentWeaponMap.FindRef(Type); }
+
 protected:
 	TMap<EBFEquipType, AWeaponBase*> CurrentWeaponMap;
 };

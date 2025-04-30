@@ -4,6 +4,7 @@
 #include "Character/BFBaseCharacter.h"
 #include "AbilitySystem/BFAbilitySystemComponent.h"
 #include "AbilitySystem/BFAttributeSet.h"
+#include "Component/Combet/PawnCombetComponent.h"
 
 #include "DebugHelper.h"
 
@@ -17,6 +18,8 @@ ABFBaseCharacter::ABFBaseCharacter()
 
 	BFAbilitySystemComponent = CreateDefaultSubobject<UBFAbilitySystemComponent>(TEXT("BFAbilitySystemComponent"));
 	BFAttributeSet = CreateDefaultSubobject<UBFAttributeSet>(TEXT("BFAttributeSet"));
+
+	CombetComponent = CreateDefaultSubobject<UPawnCombetComponent>(TEXT("CombetComponent"));
 }
 
 UAbilitySystemComponent* ABFBaseCharacter::GetAbilitySystemComponent() const
@@ -43,4 +46,9 @@ UPawnUIComponent* ABFBaseCharacter::GetPawnUIComponent() const
 UPawnEquipmentComponent* ABFBaseCharacter::GetPawnEquipmentComponent() const
 {
 	return nullptr;
+}
+
+UPawnCombetComponent* ABFBaseCharacter::GetCombetComponent() const
+{
+	return CombetComponent;
 }

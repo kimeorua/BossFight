@@ -10,7 +10,7 @@
 
 APlayerWeapon* UPlayerEquipmentComponent::GetPlayerCurrentWeapon(EBFEquipType Type) const
 {
-	return Cast<APlayerWeapon>( CurrentWeaponMap.FindRef(Type));
+	return Cast<APlayerWeapon>(GetCurrentWeapon(Type));
 }
 
 void UPlayerEquipmentComponent::RegisterWeapon(TArray<AWeaponBase*> NewWeapon)
