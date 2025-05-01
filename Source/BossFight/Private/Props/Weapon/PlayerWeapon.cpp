@@ -4,6 +4,9 @@
 #include "Props/Weapon/PlayerWeapon.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Components/BoxComponent.h"
+#include "Component/Collision/BFCombetBoxComponent.h"
+
+#include "DebugHelper.h"
 
 void APlayerWeapon::AssignGrantAbilitySpecHandles(const TArray<FGameplayAbilitySpecHandle>& InSpecHandles)
 {
@@ -43,4 +46,12 @@ void APlayerWeapon::AttackTrace()
 		CollisionData.bIsShow ? EDrawDebugTrace::ForDuration : EDrawDebugTrace::None,
 		HitResult, 
 		true);
+
+	if (HitResult.GetActor() && HitResult.GetComponent())
+	{
+		if (UBFCombetBoxComponent* HitComponent = Cast<UBFCombetBoxComponent>(HitResult.GetComponent()))
+		{
+			Debug::Print(FString::FromInt(HitComponent->GetPartNum()));
+		}
+	}
 }
