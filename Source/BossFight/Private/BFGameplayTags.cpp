@@ -50,4 +50,10 @@ namespace BFGameplayTag
 	UE_DEFINE_GAMEPLAY_TAG(Player_Event_Charge2, "Player.Event.Charge2");
 
 	UE_DEFINE_GAMEPLAY_TAG(Player_Event_ActivateChargeAttack, "Player.Event.ActivateChargeAttack");
+
+	// Enemy Tags
+	UE_DEFINE_GAMEPLAY_TAG(Enemy_Ability_Attack, "Enemy.Ability.Attack");
+	UE_DEFINE_GAMEPLAY_TAG(Enemy_Ability_Attack_1, "Enemy.Ability.Attack.1");
+	UE_DEFINE_GAMEPLAY_TAG(Enemy_Ability_Attack_2, "Enemy.Ability.Attack.2");
+	UE_DEFINE_GAMEPLAY_TAG(Enemy_Ability_Attack_3, "Enemy.Ability.Attack.3");
 }
