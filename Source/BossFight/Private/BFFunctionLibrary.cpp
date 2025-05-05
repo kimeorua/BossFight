@@ -4,6 +4,7 @@
 #include "BFFunctionLibrary.h"
 #include "AbilitySystemBlueprintLibrary.h"
 #include "AbilitySystem/BFAbilitySystemComponent.h"
+#include "GenericTeamAgentInterface.h"
 
 UBFAbilitySystemComponent* UBFFunctionLibrary::NativeGetWrroirASCFromActor(AActor* InActor)
 {
@@ -72,4 +73,18 @@ void UBFFunctionLibrary::ToggleInputMode(const UObject* WorldContextObject, EBFI
 	default:
 		break;
 	}
+}
+
+bool UBFFunctionLibrary::IsTargetPawnHostile(APawn* QueryPawn, APawn* TargetPawn)
+{
+	check(QueryPawn && TargetPawn);
+
+	IGenericTeamAgentInterface* QueryTeamAgent = Cast<IGenericTeamAgentInterface>(QueryPawn->GetController());
+	IGenericTeamAgentInterface* TargetTeamAgent = Cast<IGenericTeamAgentInterface>(TargetPawn->GetController());
+
+	if (QueryTeamAgent && TargetTeamAgent)
+	{
+		return QueryTeamAgent->GetGenericTeamId() != TargetTeamAgent->GetGenericTeamId();
+	}
+	return false;
 }

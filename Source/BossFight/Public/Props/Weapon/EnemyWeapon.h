@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Props/Weapon/WeaponBase.h"
+#include "Types/BossFightStructs.h"
 #include "EnemyWeapon.generated.h"
 
 /**
@@ -13,4 +14,14 @@ UCLASS()
 class BOSSFIGHT_API AEnemyWeapon : public AWeaponBase
 {
 	GENERATED_BODY()
+
+protected:
+	UPROPERTY(EditDefaultsOnly, Category = "Weapon Type")
+	bool bHasMesh = false;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	FBFWeaponCollisionData CollisionData;
+
+public:
+	virtual void AttackTrace() override;
 };
