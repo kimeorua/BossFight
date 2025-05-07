@@ -3,8 +3,9 @@
 
 #include "AbilitySystem/BFAttributeSet.h"
 #include "GameplayEffectExtension.h"
-
-#include "DebugHelper.h"
+#include "Interface/PawnUIInterface.h"
+#include "Component/UI/PawnUIComponent.h"
+#include "Component/UI/PlayerUIComponent.h"
 
 UBFAttributeSet::UBFAttributeSet()
 {
@@ -15,10 +16,20 @@ UBFAttributeSet::UBFAttributeSet()
 
 void UBFAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data)
 {
+	if (!CachedPawnUIInterface.IsValid())
+	{
+		CachedPawnUIInterface = TWeakInterfacePtr<IPawnUIInterface>(Data.Target.GetAvatarActor());
+	}
+
 	if (Data.EvaluatedData.Attribute == GetCurrentHPAttribute())
 	{
 		const float NewCurrentHP = FMath::Clamp(GetCurrentHP(), 0.0f, GetMaxHP());
 		SetCurrentHP(NewCurrentHP);
+
+		if (UPlayerUIComponent* PlayerUIComponent = CachedPawnUIInterface->GetPlayerUIComponent())
+		{
+			PlayerUIComponent->OnCurrentHealthChanged.Broadcast(GetCurrentHP() / GetMaxHP());
+		}
 	}
 
 	if (Data.EvaluatedData.Attribute == GetCurrentStunAttribute())

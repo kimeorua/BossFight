@@ -13,6 +13,8 @@ GAMEPLAYATTRIBUTE_VALUE_GETTER(PropertyName) \
 GAMEPLAYATTRIBUTE_VALUE_SETTER(PropertyName) \
 GAMEPLAYATTRIBUTE_VALUE_INITTER(PropertyName)
 
+class IPawnUIInterface;
+
 UCLASS()
 class BOSSFIGHT_API UBFAttributeSet : public UAttributeSet
 {
@@ -34,4 +36,6 @@ public:
 	FGameplayAttributeData CurrentStun;
 	ATTRIBUTE_ACCESSORS(UBFAttributeSet, CurrentStun)
 
+private:
+	TWeakInterfacePtr<IPawnUIInterface>CachedPawnUIInterface;
 };

@@ -6,6 +6,8 @@
 #include "Component/UI/PawnUIComponent.h"
 #include "PlayerUIComponent.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnPercentChangedDelegate, float, NwePercent);
+
 class IInteractablePropInterface;
 
 UCLASS()
@@ -21,4 +23,7 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void EndInteract();
+
+	UPROPERTY(BlueprintAssignable)
+	FOnPercentChangedDelegate OnCurrentHealthChanged;
 };
