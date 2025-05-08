@@ -69,6 +69,7 @@ private:
 	FVector2D SwitchDirection = FVector2D::ZeroVector;
 
 	void Input_Move(const FInputActionValue& InputActionValue);
+	void Input_Move_End();
 	void Input_Look(const FInputActionValue& InputActionValue);
 	void Input_Interection();
 

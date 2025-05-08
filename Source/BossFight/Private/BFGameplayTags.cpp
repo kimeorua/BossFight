@@ -43,13 +43,16 @@ namespace BFGameplayTag
 	UE_DEFINE_GAMEPLAY_TAG(Player_Status_Charge_1, "Player.Status.Charge.1");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Status_Charge_2, "Player.Status.Charge.2");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Status_Derivable, "Player.Status.Derivable");
+	UE_DEFINE_GAMEPLAY_TAG(Player_Status_UseDash, "Player.Status.UseDash");
+	UE_DEFINE_GAMEPLAY_TAG(Player_Status_DashSPDawn, "Player.Status.DashSPDawn");
+	UE_DEFINE_GAMEPLAY_TAG(Player_Status_Exhaustion, "Player.Status.Exhaustion");
 
 	UE_DEFINE_GAMEPLAY_TAG(Player_Event_ReadyCombo, "Player.Event.ReadyCombo");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Event_EndCombo, "Player.Event.EndCombo");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Event_Charge1, "Player.Event.Charge1");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Event_Charge2, "Player.Event.Charge2");
-
 	UE_DEFINE_GAMEPLAY_TAG(Player_Event_ActivateChargeAttack, "Player.Event.ActivateChargeAttack");
+	UE_DEFINE_GAMEPLAY_TAG(Player_Event_DashEnd, "Player.Event.DashEnd");
 
 	// Enemy Tags
 	UE_DEFINE_GAMEPLAY_TAG(Enemy_Ability_Attack, "Enemy.Ability.Attack");

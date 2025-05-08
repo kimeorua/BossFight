@@ -3,6 +3,12 @@
 
 #include "AbilitySystem/BFPlayerAttributeSet.h"
 #include "GameplayEffectExtension.h"
+#include "Interface/PawnUIInterface.h"
+#include "Component/UI/PawnUIComponent.h"
+#include "Component/UI/PlayerUIComponent.h"
+#include "BFFunctionLibrary.h"
+#include "BFGameplayTags.h"
+#include "AbilitySystemBlueprintLibrary.h"
 
 UBFPlayerAttributeSet::UBFPlayerAttributeSet()
 {
@@ -15,10 +21,34 @@ UBFPlayerAttributeSet::UBFPlayerAttributeSet()
 
 void UBFPlayerAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data)
 {
+	if (!CachedPawnUIInterface.IsValid())
+	{
+		CachedPawnUIInterface = TWeakInterfacePtr<IPawnUIInterface>(Data.Target.GetAvatarActor());
+	}
+
 	if (Data.EvaluatedData.Attribute == GetCurrentSPAttribute())
 	{
 		const float NewCurrentSP = FMath::Clamp(GetCurrentSP(), 0.0f, GetMaxSP());
 		SetCurrentSP(NewCurrentSP);
+
+		if (UPlayerUIComponent* PlayerUIComponent = CachedPawnUIInterface->GetPlayerUIComponent())
+		{
+			PlayerUIComponent->OnCurrentSPChanged.Broadcast(GetCurrentSP() / GetMaxSP());
+		}
+
+		if (GetCurrentSP() <= 0.0f)
+		{
+			UBFFunctionLibrary::AddGameplayTagToActorIfNone(Data.Target.GetAvatarActor(), BFGameplayTag::Player_Status_Exhaustion);
+
+			if (UBFFunctionLibrary::NativeDoseActorHaveTag(Data.Target.GetAvatarActor(), BFGameplayTag::Player_Status_UseDash))
+			{
+				UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(Data.Target.GetAvatarActor(), BFGameplayTag::Player_Event_DashEnd, FGameplayEventData());
+			}
+		}
+		if (GetCurrentSP() >= 20.0f)
+		{
+			UBFFunctionLibrary::RemoveGameplayTagToActorIfFind(Data.Target.GetAvatarActor(), BFGameplayTag::Player_Status_Exhaustion);
+		}
 	}
 	if (Data.EvaluatedData.Attribute == GetMaxSPAttribute())
 	{

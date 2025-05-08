@@ -17,8 +17,8 @@
 #include "Component/UI/PlayerUIComponent.h"
 #include "Component/Equipment/PlayerEquipmentComponent.h"
 #include "AbilitySystem/BFPlayerAttributeSet.h"
+#include "BFFunctionLibrary.h"
 
-#include "DebugHelper.h"
 
 ABFPlayerCharacter::ABFPlayerCharacter()
 {
@@ -102,6 +102,7 @@ void ABFPlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 	UBFInputComponent* BFInputComponent = CastChecked<UBFInputComponent>(PlayerInputComponent);
 
 	BFInputComponent->BindNativeInputAction(InputConfigDataAsset, BFGameplayTag::InputTag_Move, ETriggerEvent::Triggered, this, &ThisClass::Input_Move);
+	BFInputComponent->BindNativeInputAction(InputConfigDataAsset, BFGameplayTag::InputTag_Move, ETriggerEvent::Completed, this, &ThisClass::Input_Move_End);
 	BFInputComponent->BindNativeInputAction(InputConfigDataAsset, BFGameplayTag::InputTag_Look, ETriggerEvent::Triggered, this, &ThisClass::Input_Look);
 	BFInputComponent->BindNativeInputAction(InputConfigDataAsset, BFGameplayTag::InputTag_Interaction, ETriggerEvent::Started, this, &ThisClass::Input_Interection);
 
@@ -126,6 +127,20 @@ void ABFPlayerCharacter::Input_Move(const FInputActionValue& InputActionValue)
 
 		AddMovementInput(RightDirection, MovementVector.X);
 	}
+
+	if (UBFFunctionLibrary::NativeDoseActorHaveTag(this, BFGameplayTag::Player_Status_UseDash))
+	{
+		UBFFunctionLibrary::AddGameplayTagToActorIfNone(this, BFGameplayTag::Player_Status_DashSPDawn);
+	}
+	else
+	{
+		UBFFunctionLibrary::RemoveGameplayTagToActorIfFind(this, BFGameplayTag::Player_Status_DashSPDawn);
+	}
+}
+
+void ABFPlayerCharacter::Input_Move_End()
+{
+	UBFFunctionLibrary::RemoveGameplayTagToActorIfFind(this, BFGameplayTag::Player_Status_DashSPDawn);
 }
 
 void ABFPlayerCharacter::Input_Look(const FInputActionValue& InputActionValue)

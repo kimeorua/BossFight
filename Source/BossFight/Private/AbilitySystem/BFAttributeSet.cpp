@@ -34,7 +34,7 @@ void UBFAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModCallback
 
 	if (Data.EvaluatedData.Attribute == GetCurrentStunAttribute())
 	{
-		const float NewMaxHP = FMath::Clamp(GetMaxHP(), 0.0f, 100.0f);
-		SetMaxHP(NewMaxHP);
+		const float NewMaxHP = FMath::Clamp(GetCurrentStun(), 0.0f, 100.0f);
+		SetCurrentStun(NewMaxHP);
 	}
 }

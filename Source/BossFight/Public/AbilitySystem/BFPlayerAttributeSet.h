@@ -13,6 +13,8 @@ GAMEPLAYATTRIBUTE_VALUE_GETTER(PropertyName) \
 GAMEPLAYATTRIBUTE_VALUE_SETTER(PropertyName) \
 GAMEPLAYATTRIBUTE_VALUE_INITTER(PropertyName)
 
+class IPawnUIInterface;
+
 UCLASS()
 class BOSSFIGHT_API UBFPlayerAttributeSet : public UAttributeSet
 {
@@ -41,4 +43,7 @@ public:
 	UPROPERTY(BlueprintReadOnly, Category = "Weapon")
 	FGameplayAttributeData ShieldGage;
 	ATTRIBUTE_ACCESSORS(UBFPlayerAttributeSet, ShieldGage)
+
+private:
+	TWeakInterfacePtr<IPawnUIInterface>CachedPawnUIInterface;
 };
