@@ -6,6 +6,7 @@
 #include "Components/BoxComponent.h"
 #include "Character/BFBaseCharacter.h"
 #include "BFFunctionLibrary.h"
+#include "BFGameplayTags.h"
 
 #include "DebugHelper.h"
 
@@ -51,6 +52,14 @@ void AEnemyWeapon::AttackTrace()
 
 	if (HitResult.GetActor() && UBFFunctionLibrary::IsTargetPawnHostile(Cast<APawn>(GetOwner()),  Cast<APawn>(HitResult.GetActor())))
 	{
-		Debug::Print(HitResult.GetActor()->GetActorNameOrLabel());
+		if (UBFFunctionLibrary::NativeDoseActorHaveTag(HitResult.GetActor(), BFGameplayTag::Player_Status_Avoiding))
+		{
+			Debug::Print("Player Is Avoiding");
+		}
+		else
+		{
+			Debug::Print("Player Is Damaged");
+			// TODO : 피격한 객체에게 데미지 전달
+		}
 	}
 }

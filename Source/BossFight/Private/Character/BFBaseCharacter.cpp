@@ -5,6 +5,7 @@
 #include "AbilitySystem/BFAbilitySystemComponent.h"
 #include "AbilitySystem/BFAttributeSet.h"
 #include "Component/Combet/PawnCombetComponent.h"
+#include "MotionWarpingComponent.h"
 
 #include "DebugHelper.h"
 
@@ -20,6 +21,8 @@ ABFBaseCharacter::ABFBaseCharacter()
 	BFAttributeSet = CreateDefaultSubobject<UBFAttributeSet>(TEXT("BFAttributeSet"));
 
 	CombetComponent = CreateDefaultSubobject<UPawnCombetComponent>(TEXT("CombetComponent"));
+
+	MotionWarpingComponent = CreateDefaultSubobject<UMotionWarpingComponent>(TEXT("MotionWarpingComponent"));
 }
 
 UAbilitySystemComponent* ABFBaseCharacter::GetAbilitySystemComponent() const

@@ -12,6 +12,7 @@ namespace BFGameplayTag
 	UE_DEFINE_GAMEPLAY_TAG(InputTag_ComboAttack, "InputTag.ComboAttack");
 	UE_DEFINE_GAMEPLAY_TAG(InputTag_PowerAttack, "InputTag.PowerAttack");
 	UE_DEFINE_GAMEPLAY_TAG(InputTag_DerivAttack, "InputTag.DerivAttack");
+	UE_DEFINE_GAMEPLAY_TAG(InputTag_Avoid, "InputTag.Avoid");
 
 	UE_DEFINE_GAMEPLAY_TAG(InputTag_Hold, "InputTag.Hold");
 	UE_DEFINE_GAMEPLAY_TAG(InputTag_Hold_Dash, "InputTag.Hold.Dash");
@@ -26,6 +27,7 @@ namespace BFGameplayTag
 	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_Combo_3, "Player.Ability.Combo.3");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_Combo_4, "Player.Ability.Combo.4");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_Combo_Deriv, "Player.Ability.Combo.Deriv");
+	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_Avoid, "Player.Ability.Avoid");
 
 	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_PowerAttack, "Player.Ability.PowerAttack");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Ability_PowerAttack_Combo1, "Player.Ability.PowerAttack.Combo1");
@@ -46,6 +48,8 @@ namespace BFGameplayTag
 	UE_DEFINE_GAMEPLAY_TAG(Player_Status_UseDash, "Player.Status.UseDash");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Status_DashSPDawn, "Player.Status.DashSPDawn");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Status_Exhaustion, "Player.Status.Exhaustion");
+	UE_DEFINE_GAMEPLAY_TAG(Player_Status_UseAvoid, "Player.Status.UseAvoid");
+	UE_DEFINE_GAMEPLAY_TAG(Player_Status_Avoiding, "Player.Status.Avoiding");
 
 	UE_DEFINE_GAMEPLAY_TAG(Player_Event_ReadyCombo, "Player.Event.ReadyCombo");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Event_EndCombo, "Player.Event.EndCombo");
@@ -53,6 +57,8 @@ namespace BFGameplayTag
 	UE_DEFINE_GAMEPLAY_TAG(Player_Event_Charge2, "Player.Event.Charge2");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Event_ActivateChargeAttack, "Player.Event.ActivateChargeAttack");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Event_DashEnd, "Player.Event.DashEnd");
+	UE_DEFINE_GAMEPLAY_TAG(Player_Event_AvoidingStart, "Player.Event.AvoidingStart");
+	UE_DEFINE_GAMEPLAY_TAG(Player_Event_AvoidingEnd, "Player.Event.AvoidingEnd");
 
 	// Enemy Tags
 	UE_DEFINE_GAMEPLAY_TAG(Enemy_Ability_Attack, "Enemy.Ability.Attack");

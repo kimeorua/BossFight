@@ -14,6 +14,7 @@ class UBFAbilitySystemComponent;
 class UBFAttributeSet;
 class UDataAsset_StartUpBase;
 class UPawnCombetComponent;
+class UMotionWarpingComponent;
 
 UCLASS()
 class BOSSFIGHT_API ABFBaseCharacter : public ACharacter, public IAbilitySystemInterface, public IPawnUIInterface, public IPawnEquipmentInterface, public IPawnCombetInterface
@@ -54,6 +55,9 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Combet")
 	UPawnCombetComponent* CombetComponent;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "MotionWarping")
+	UMotionWarpingComponent* MotionWarpingComponent;
 
 public:
 	FORCEINLINE UBFAbilitySystemComponent* GetBFAbilitySystemComponent() const { return BFAbilitySystemComponent; }
