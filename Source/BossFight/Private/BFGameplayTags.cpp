@@ -65,4 +65,10 @@ namespace BFGameplayTag
 	UE_DEFINE_GAMEPLAY_TAG(Enemy_Ability_Attack_1, "Enemy.Ability.Attack.1");
 	UE_DEFINE_GAMEPLAY_TAG(Enemy_Ability_Attack_2, "Enemy.Ability.Attack.2");
 	UE_DEFINE_GAMEPLAY_TAG(Enemy_Ability_Attack_3, "Enemy.Ability.Attack.3");
+
+	// Shared Tags
+	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_OnDamaged, "Shared.Event.OnDamaged");
+	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_OnDamaged_Power, "Shared.Event.OnDamaged.Power");
+	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_OnDamaged_Part1, "Shared.Event.OnDamaged.Part1");
+	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_OnDamaged_Part2, "Shared.Event.OnDamaged.Part2");
 }

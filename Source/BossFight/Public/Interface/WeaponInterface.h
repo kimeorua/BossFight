@@ -23,4 +23,6 @@ class BOSSFIGHT_API IWeaponInterface
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
 	virtual void AttackTrace() = 0;
+	virtual void OnHitActor(AActor* HitActor) = 0;
+	virtual void AttackEnd() = 0;
 };

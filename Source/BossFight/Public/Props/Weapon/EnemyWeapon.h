@@ -24,4 +24,6 @@ protected:
 
 public:
 	virtual void AttackTrace() override;
+	virtual void OnHitActor(AActor* HitActor) override;
+	virtual void AttackEnd() override;
 };

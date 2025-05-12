@@ -13,3 +13,10 @@ void UPawnCombetComponent::ActivateWeaponTrace(EBFEquipType Type)
 	IWeaponInterface* WeaponInterface = Cast<IWeaponInterface>(EquipmentComponent->GetCurrentWeapon(Type));
 	WeaponInterface->AttackTrace();
 }
+
+void UPawnCombetComponent::AttackEnd(EBFEquipType Type)
+{
+	UPawnEquipmentComponent* EquipmentComponent = Cast<IPawnEquipmentInterface>(GetOwner())->GetPawnEquipmentComponent();
+	IWeaponInterface* WeaponInterface = Cast<IWeaponInterface>(EquipmentComponent->GetCurrentWeapon(Type));
+	WeaponInterface->AttackEnd();
+}

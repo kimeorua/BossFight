@@ -114,6 +114,8 @@ void ABFPlayerCharacter::Input_Move(const FInputActionValue& InputActionValue)
 	const FVector2D MovementVector = InputActionValue.Get<FVector2D>();
 	const FRotator MovementRotator(0.0f, Controller->GetControlRotation().Yaw, 0.0f);
 
+	if (UBFFunctionLibrary::NativeDoseActorHaveTag(this, BFGameplayTag::Player_Status_Charge)) { return; }
+
 	if (MovementVector.Y != 0.0f)
 	{
 		const FVector ForwardDirection = MovementRotator.RotateVector(FVector::ForwardVector);

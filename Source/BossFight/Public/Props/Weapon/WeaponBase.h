@@ -22,6 +22,10 @@ public:
 
 	virtual void AttackTrace() override;
 
+	virtual void OnHitActor(AActor* HitActor) override;
+
+	virtual void AttackEnd() override;
+
 protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	EBFEquipType EquipType = EBFEquipType::EquipRight;
@@ -31,4 +35,6 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	FName WeaponSocket;
+
+	AActor* HitedActor;
 };

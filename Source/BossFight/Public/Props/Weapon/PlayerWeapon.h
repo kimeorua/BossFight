@@ -22,6 +22,8 @@ public:
 	FBFPlayerWeaponData WeaponData;
 
 	virtual void AttackTrace() override;
+	virtual void OnHitActor(AActor* HitActor) override;
+	virtual void OnHitActor(AActor* HitActor, int32 PartNum);
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	FBFWeaponCollisionData CollisionData;

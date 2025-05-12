@@ -13,8 +13,19 @@ AWeaponBase::AWeaponBase()
 	WeaponCollision->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 
 	Mesh->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+
+	HitedActor = nullptr;
 }
 
 void AWeaponBase::AttackTrace()
 {
+}
+
+void AWeaponBase::OnHitActor(AActor* HitActor)
+{
+}
+
+void AWeaponBase::AttackEnd()
+{
+	HitedActor = nullptr;
 }

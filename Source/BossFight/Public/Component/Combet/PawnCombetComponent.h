@@ -15,4 +15,7 @@ class BOSSFIGHT_API UPawnCombetComponent : public UPawnExtensionComponent
 public:
 	UFUNCTION(BlueprintCallable)
 	void ActivateWeaponTrace(EBFEquipType Type);
+
+	UFUNCTION(BlueprintCallable)
+	void AttackEnd(EBFEquipType Type);
 };

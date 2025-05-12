@@ -7,6 +7,7 @@
 #include "Character/BFBaseCharacter.h"
 #include "BFFunctionLibrary.h"
 #include "BFGameplayTags.h"
+#include "AbilitySystemBlueprintLibrary.h"
 
 #include "DebugHelper.h"
 
@@ -25,6 +26,7 @@ void AEnemyWeapon::AttackTrace()
 	FHitResult HitResult;
 
 	BoxSize = WeaponCollision->GetScaledBoxExtent();
+	WeaponCollision->SetCollisionResponseToChannel(ECC_Pawn, ECR_Ignore);
 
 	if (bHasMesh)
 	{
@@ -52,14 +54,27 @@ void AEnemyWeapon::AttackTrace()
 
 	if (HitResult.GetActor() && UBFFunctionLibrary::IsTargetPawnHostile(Cast<APawn>(GetOwner()),  Cast<APawn>(HitResult.GetActor())))
 	{
-		if (UBFFunctionLibrary::NativeDoseActorHaveTag(HitResult.GetActor(), BFGameplayTag::Player_Status_Avoiding))
-		{
-			Debug::Print("Player Is Avoiding");
-		}
-		else
-		{
-			Debug::Print("Player Is Damaged");
-			// TODO : 피격한 객체에게 데미지 전달
-		}
+		OnHitActor(HitResult.GetActor());
 	}
+}
+
+void AEnemyWeapon::OnHitActor(AActor* HitActor)
+{
+	if (HitedActor == HitActor) { return; }
+
+	HitedActor = HitActor;
+	if (UBFFunctionLibrary::NativeDoseActorHaveTag(HitedActor, BFGameplayTag::Player_Status_Avoiding)) { return; }
+
+	FGameplayEventData Data;
+	Data.Instigator = GetOwner();
+	Data.Target = HitActor;
+
+	// TODO : 강 공격, 약공격을 Tag를 통해 구분하여, SendGameplayEventToActor() 발송 하도록 구현
+	UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(GetOwner(), BFGameplayTag::Shared_Event_OnDamaged, Data);
+}
+
+void AEnemyWeapon::AttackEnd()
+{
+	Super::AttackEnd();
+	WeaponCollision->SetCollisionResponseToChannel(ECC_Pawn, ECR_Block);
 }
