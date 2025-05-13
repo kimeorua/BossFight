@@ -26,7 +26,6 @@ void AEnemyWeapon::AttackTrace()
 	FHitResult HitResult;
 
 	BoxSize = WeaponCollision->GetScaledBoxExtent();
-	WeaponCollision->SetCollisionResponseToChannel(ECC_Pawn, ECR_Ignore);
 
 	if (bHasMesh)
 	{
@@ -69,12 +68,19 @@ void AEnemyWeapon::OnHitActor(AActor* HitActor)
 	Data.Instigator = GetOwner();
 	Data.Target = HitActor;
 
-	// TODO : 강 공격, 약공격을 Tag를 통해 구분하여, SendGameplayEventToActor() 발송 하도록 구현
 	UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(GetOwner(), BFGameplayTag::Shared_Event_OnDamaged, Data);
+
+	if (UBFFunctionLibrary::NativeDoseActorHaveTag(GetOwner(), BFGameplayTag::Enemy_Status_Attack_Normal))
+	{
+		UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(HitedActor, BFGameplayTag::Player_Event_OnHit_Normal, FGameplayEventData());
+	}
+	else if (UBFFunctionLibrary::NativeDoseActorHaveTag(GetOwner(), BFGameplayTag::Enemy_Status_Attack_Power))
+	{
+		UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(HitedActor, BFGameplayTag::Player_Event_OnHit_Power, FGameplayEventData());
+	}
 }
 
 void AEnemyWeapon::AttackEnd()
 {
 	Super::AttackEnd();
-	WeaponCollision->SetCollisionResponseToChannel(ECC_Pawn, ECR_Block);
 }

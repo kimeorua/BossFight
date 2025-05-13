@@ -9,6 +9,7 @@
 class UEnemyEquipmentComponent;
 class UEnemyUIComponent;
 class UBFEnemyAttributeSet;
+class UBFCombetBoxComponent;
 
 UCLASS()
 class BOSSFIGHT_API ABFEnemyCharacter : public ABFBaseCharacter

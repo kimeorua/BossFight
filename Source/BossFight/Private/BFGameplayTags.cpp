@@ -59,12 +59,19 @@ namespace BFGameplayTag
 	UE_DEFINE_GAMEPLAY_TAG(Player_Event_DashEnd, "Player.Event.DashEnd");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Event_AvoidingStart, "Player.Event.AvoidingStart");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Event_AvoidingEnd, "Player.Event.AvoidingEnd");
+	UE_DEFINE_GAMEPLAY_TAG(Player_Event_OnHit, "Player.Event.OnHit");
+	UE_DEFINE_GAMEPLAY_TAG(Player_Event_OnHit_Normal, "Player.Event.OnHit.Normal");
+	UE_DEFINE_GAMEPLAY_TAG(Player_Event_OnHit_Power, "Player.Event.OnHit.Power");
 
 	// Enemy Tags
 	UE_DEFINE_GAMEPLAY_TAG(Enemy_Ability_Attack, "Enemy.Ability.Attack");
 	UE_DEFINE_GAMEPLAY_TAG(Enemy_Ability_Attack_1, "Enemy.Ability.Attack.1");
 	UE_DEFINE_GAMEPLAY_TAG(Enemy_Ability_Attack_2, "Enemy.Ability.Attack.2");
 	UE_DEFINE_GAMEPLAY_TAG(Enemy_Ability_Attack_3, "Enemy.Ability.Attack.3");
+
+	UE_DEFINE_GAMEPLAY_TAG(Enemy_Status_Attack, "Enemy.Status.Attack");
+	UE_DEFINE_GAMEPLAY_TAG(Enemy_Status_Attack_Normal, "Enemy.Status.Attack.Normal");
+	UE_DEFINE_GAMEPLAY_TAG(Enemy_Status_Attack_Power, "Enemy.Status.Attack.Power");
 
 	// Shared Tags
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_OnDamaged, "Shared.Event.OnDamaged");
