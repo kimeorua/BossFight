@@ -29,3 +29,10 @@ enum class EBFEnemyAIState : uint8
 	Attack,
 	None
 };
+
+UENUM(BlueprintType)
+enum class EBFEnemyAttackType : uint8
+{
+	LeftArm,
+	RightArm
+};

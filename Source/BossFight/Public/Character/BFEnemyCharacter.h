@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Character/BFBaseCharacter.h"
+#include "Types/BFEnumType.h"
 #include "BFEnemyCharacter.generated.h"
 
 class UEnemyEquipmentComponent;
@@ -18,6 +19,12 @@ class BOSSFIGHT_API ABFEnemyCharacter : public ABFBaseCharacter
 	
 public:
 	ABFEnemyCharacter();
+
+	UFUNCTION(BlueprintCallable)
+	void SetCollisionSet(EBFEnemyAttackType Type, UBFCombetBoxComponent* Collision);
+
+	UFUNCTION(BlueprintCallable)
+	void AttackCollisionChange(EBFEnemyAttackType Type, ECollisionResponse NewECR);
 
 protected:
 	//~ Begin APawn Interface.
@@ -48,5 +55,10 @@ private:
 #pragma region EnemyAttributeSet
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AbilitySystem", meta = (AllowPrivateAccess = "true"))
 	UBFEnemyAttributeSet* BFEnemyAttributeSet;
+#pragma endregion
+
+#pragma region EnemyCollision
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "EnemyCollision", meta = (AllowPrivateAccess = "true"))
+	TMap<EBFEnemyAttackType, UBFCombetBoxComponent*> CollisionSet;
 #pragma endregion
 };

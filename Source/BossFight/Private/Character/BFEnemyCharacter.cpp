@@ -8,6 +8,7 @@
 #include "Component/UI/EnemyUIComponent.h"
 #include "DataAsset/StartUp/DataAsset_StartUpEnemy.h"
 #include "AbilitySystem/BFEnemyAttributeSet.h"
+#include "Component/Collision/BFCombetBoxComponent.h"
 
 ABFEnemyCharacter::ABFEnemyCharacter()
 {
@@ -26,6 +27,26 @@ ABFEnemyCharacter::ABFEnemyCharacter()
 	EnemyUIComponent = CreateDefaultSubobject<UEnemyUIComponent>(TEXT("EnemyUIComponent"));
 
 	BFEnemyAttributeSet = CreateDefaultSubobject<UBFEnemyAttributeSet>(TEXT("BFEnemyAttributeSet"));
+}
+
+void ABFEnemyCharacter::SetCollisionSet(EBFEnemyAttackType Type, UBFCombetBoxComponent* Collision)
+{
+	if (Collision)
+	{
+		if (CollisionSet.Contains(Type)) { return; }
+		CollisionSet.Add(Type, Collision);
+	}
+}
+
+void ABFEnemyCharacter::AttackCollisionChange(EBFEnemyAttackType Type, ECollisionResponse NewECR)
+{
+	if (CollisionSet.Contains(Type))
+	{
+		if (UBFCombetBoxComponent* FoundCollision = CollisionSet.FindChecked(Type))
+		{
+			FoundCollision->SetCollisionResponseToChannel(ECC_Pawn, NewECR);
+		}
+	}
 }
 
 void ABFEnemyCharacter::BeginPlay()
