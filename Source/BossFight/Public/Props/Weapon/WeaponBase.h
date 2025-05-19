@@ -20,12 +20,12 @@ public:
 
 	FORCEINLINE EBFEquipType GetEquipType() const { return EquipType; }
 
+	// ~Begin IWeaponInterface
 	virtual void AttackTrace() override;
-
 	virtual void OnHitActor(AActor* HitActor) override;
-
 	virtual void AttackEnd() override;
-
+	virtual void AttackStart() override;
+	// ~End IWeaponInterface
 protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	EBFEquipType EquipType = EBFEquipType::EquipRight;

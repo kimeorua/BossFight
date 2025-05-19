@@ -24,9 +24,16 @@ public:
 	virtual void AttackTrace() override;
 	virtual void OnHitActor(AActor* HitActor) override;
 	virtual void OnHitActor(AActor* HitActor, int32 PartNum);
+	virtual void AttackEnd() override;
 
 	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	FBFWeaponCollisionData CollisionData;
+
+	UFUNCTION()
+	void OnWeaponParryOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+protected:
+	APlayerWeapon();
 
 private:
 	TArray<FGameplayAbilitySpecHandle>GrantAbilitySpecHandles;

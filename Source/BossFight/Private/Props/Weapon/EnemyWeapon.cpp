@@ -63,24 +63,24 @@ void AEnemyWeapon::OnHitActor(AActor* HitActor)
 
 	HitedActor = HitActor;
 	if (UBFFunctionLibrary::NativeDoseActorHaveTag(HitedActor, BFGameplayTag::Player_Status_Avoiding)) { return; }
-
+	if (UBFFunctionLibrary::NativeDoseActorHaveTag(HitedActor, BFGameplayTag::Player_Status_ParrySuccess)) 
+	{ 
+		Debug::Print("Parr!!"); 
+		return; 
+	}
 	FGameplayEventData Data;
 	Data.Instigator = GetOwner();
 	Data.Target = HitActor;
 
 	UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(GetOwner(), BFGameplayTag::Shared_Event_OnDamaged, Data);
-
 	if (UBFFunctionLibrary::NativeDoseActorHaveTag(GetOwner(), BFGameplayTag::Enemy_Status_Attack_Normal))
 	{
 		UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(HitedActor, BFGameplayTag::Player_Event_OnHit_Normal, FGameplayEventData());
+		Debug::Print("Hit Normal");
 	}
 	else if (UBFFunctionLibrary::NativeDoseActorHaveTag(GetOwner(), BFGameplayTag::Enemy_Status_Attack_Power))
 	{
 		UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(HitedActor, BFGameplayTag::Player_Event_OnHit_Power, FGameplayEventData());
+		Debug::Print("Hit Power");
 	}
-}
-
-void AEnemyWeapon::AttackEnd()
-{
-	Super::AttackEnd();
 }

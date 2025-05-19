@@ -50,6 +50,7 @@ namespace BFGameplayTag
 	UE_DEFINE_GAMEPLAY_TAG(Player_Status_Exhaustion, "Player.Status.Exhaustion");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Status_UseAvoid, "Player.Status.UseAvoid");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Status_Avoiding, "Player.Status.Avoiding");
+	UE_DEFINE_GAMEPLAY_TAG(Player_Status_ParrySuccess, "Player.Status.ParrySuccess");
 
 	UE_DEFINE_GAMEPLAY_TAG(Player_Event_ReadyCombo, "Player.Event.ReadyCombo");
 	UE_DEFINE_GAMEPLAY_TAG(Player_Event_EndCombo, "Player.Event.EndCombo");

@@ -11,6 +11,11 @@
 
 #include "DebugHelper.h"
 
+APlayerWeapon::APlayerWeapon()
+{
+	WeaponCollision->OnComponentBeginOverlap.AddDynamic(this, &APlayerWeapon::OnWeaponParryOverlap);
+}
+
 void APlayerWeapon::AssignGrantAbilitySpecHandles(const TArray<FGameplayAbilitySpecHandle>& InSpecHandles)
 {
 	GrantAbilitySpecHandles = InSpecHandles;
@@ -100,4 +105,15 @@ void APlayerWeapon::OnHitActor(AActor* HitActor, int32 PartNum)
 	default:
 		break;
 	}
+}
+
+void APlayerWeapon::AttackEnd()
+{
+	Super::AttackEnd();
+	UBFFunctionLibrary::RemoveGameplayTagToActorIfFind(GetOwner(), BFGameplayTag::Player_Status_ParrySuccess);
+}
+
+void APlayerWeapon::OnWeaponParryOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+{
+	UBFFunctionLibrary::AddGameplayTagToActorIfNone(GetOwner(), BFGameplayTag::Player_Status_ParrySuccess)	;
 }

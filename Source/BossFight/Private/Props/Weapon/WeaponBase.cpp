@@ -28,4 +28,10 @@ void AWeaponBase::OnHitActor(AActor* HitActor)
 void AWeaponBase::AttackEnd()
 {
 	HitedActor = nullptr;
+	WeaponCollision->SetCollisionEnabled(ECollisionEnabled::NoCollision);
+}
+
+void AWeaponBase::AttackStart()
+{
+	WeaponCollision->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 }

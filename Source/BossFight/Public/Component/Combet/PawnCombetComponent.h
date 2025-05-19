@@ -18,4 +18,7 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void AttackEnd(EBFEquipType Type);
+
+	UFUNCTION(BlueprintCallable)
+	void AttackStart(EBFEquipType Type);
 };

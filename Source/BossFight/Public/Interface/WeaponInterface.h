@@ -25,4 +25,5 @@ public:
 	virtual void AttackTrace() = 0;
 	virtual void OnHitActor(AActor* HitActor) = 0;
 	virtual void AttackEnd() = 0;
+	virtual void AttackStart() = 0;
 };
