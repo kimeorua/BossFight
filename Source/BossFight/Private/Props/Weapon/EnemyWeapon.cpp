@@ -25,7 +25,7 @@ void AEnemyWeapon::AttackTrace()
 
 	FHitResult HitResult;
 
-	BoxSize = WeaponCollision->GetScaledBoxExtent();
+	BoxSize = WeaponCollision->GetScaledBoxExtent() / 2;
 
 	if (bHasMesh)
 	{

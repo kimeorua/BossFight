@@ -74,6 +74,8 @@ namespace BFGameplayTag
 	UE_DEFINE_GAMEPLAY_TAG(Enemy_Status_Attack_Normal, "Enemy.Status.Attack.Normal");
 	UE_DEFINE_GAMEPLAY_TAG(Enemy_Status_Attack_Power, "Enemy.Status.Attack.Power");
 
+	UE_DEFINE_GAMEPLAY_TAG(Enemy_Event_ParryHit, "Enemy.Event.ParryHit");
+
 	// Shared Tags
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_OnDamaged, "Shared.Event.OnDamaged");
 	UE_DEFINE_GAMEPLAY_TAG(Shared_Event_OnDamaged_Power, "Shared.Event.OnDamaged.Power");

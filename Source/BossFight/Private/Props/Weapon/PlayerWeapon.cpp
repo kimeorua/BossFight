@@ -116,4 +116,5 @@ void APlayerWeapon::AttackEnd()
 void APlayerWeapon::OnWeaponParryOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
 	UBFFunctionLibrary::AddGameplayTagToActorIfNone(GetOwner(), BFGameplayTag::Player_Status_ParrySuccess)	;
+	UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(OtherActor->GetOwner(), BFGameplayTag::Enemy_Event_ParryHit, FGameplayEventData());
 }
